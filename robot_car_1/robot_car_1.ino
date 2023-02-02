@@ -34,6 +34,7 @@ void setup() {
 }
 
 void loop() {
+  /*
   connection = Serial.read();
   Serial.println(connection);
 
@@ -60,6 +61,7 @@ void loop() {
     stop();
     delay(500);
   }
+  */
 }
 
 void go_forward(){
