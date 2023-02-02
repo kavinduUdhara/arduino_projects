@@ -61,9 +61,10 @@ void loop() {
   // Check if the received signal is '1'
   if (connection == '1'){
     servo_motor_forward();
+    delay(2000);
     int distance = ultrasonicSensor.distanceRead(); // Measure the distance using the ultrasonic sensor
-    // Check if the distance measured is not 0 and greater than 10
-    if (distance != 0 and distance > 10){
+    // Check if the distance measured is not 0 and greater than 20
+    if (distance != 0 and distance > 20){
       go_forward();
       after_action();
     }
@@ -77,7 +78,8 @@ void loop() {
   if (connection == '3'){
     servo_motor_right();
     int distance = ultrasonicSensor.distanceRead();
-    if (distance != 0 and distance > 10){
+    Serial.println(distance);
+    if (distance != 0 and distance > 20){
       turn_right();
       after_action();
     }
@@ -86,7 +88,8 @@ void loop() {
   if (connection == '4'){
     servo_motor_left();
     int distance = ultrasonicSensor.distanceRead();
-    if (distance != 0 and distance > 10){
+    Serial.println(distance);
+    if (distance != 0 and distance > 20){
       turn_left();
       after_action();
     }
