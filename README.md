@@ -1,11 +1,7 @@
 # arduino_projects
 
-```
 shortcuts:
 
-[Link text](https://www.example.com)
-
-```
 [Link Text](#robot_car_1)
 
 ### robot_car_1
