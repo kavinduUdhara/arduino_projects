@@ -6,14 +6,14 @@ int EnA = 3;
 int In1 = 4;
 int In2 = 5;
 
-int EnB = 9;
+int EnB = 11; //...use of the library disables analogWrite() (PWM) functionality on pins 9 and 10,... ref: https://stackoverflow.com/questions/75318922/motor-driver-isnt-working-properly-while-servo-attacha0-line-present-in-the
 int In3 = 12;
 int In4 = 13;
 
 char connection;
 
 void setup() {
-  //servo.attach(A0); //servo motor pin
+  servo.attach(A0); //servo motor pin
 
   //L298N-2A Motor Driver Module | motorA - pins
   pinMode(EnA, OUTPUT);
@@ -26,11 +26,13 @@ void setup() {
   pinMode(In4, OUTPUT);
 
   //define the speed of the motors | lowest - 100 | highest - 200
-  analogWrite(EnA, 150);
-  analogWrite(EnB, 150);
+  analogWrite(EnA, 100);
+  analogWrite(EnB, 100);
 
   //for bluetooth signals
   //Serial.begin(9600);
+
+  servo.write(90);
 }
 
 void loop() {
