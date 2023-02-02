@@ -2,13 +2,13 @@
 //servo motor
 Servo servo = Servo();
 
-int EnA = 5;
-int In1 = 6;
-int In2 = 7;
+int EnA = 3;
+int In1 = 4;
+int In2 = 5;
 
 int EnB = 9;
-int In3 = 10;
-int In4 = 11;
+int In3 = 12;
+int In4 = 13;
 
 char connection;
 
@@ -30,38 +30,11 @@ void setup() {
   analogWrite(EnB, 150);
 
   //for bluetooth signals
-  Serial.begin(9600);
+  //Serial.begin(9600);
 }
 
 void loop() {
-  /*
-  connection = Serial.read();
-  Serial.println(connection);
-
-  if (connection == '1'){
-    servo_motor_forward();
-    go_forward();
-    after_action();
-  }
-  if (connection == '2'){
-    go_backward();
-    after_action();
-  }
-  if (connection == '3'){
-    servo_motor_right();
-    turn_right();
-    after_action();
-  }
-  if (connection == '4'){
-    servo_motor_left();
-    turn_left();
-    after_action();
-  }
-  if (connection == '5'){
-    stop();
-    delay(500);
-  }
-  */
+  go_forward();
 }
 
 void go_forward(){
