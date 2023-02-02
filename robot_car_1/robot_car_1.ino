@@ -30,13 +30,38 @@ void setup() {
   analogWrite(EnB, 100);
 
   //for bluetooth signals
-  //Serial.begin(9600);
+  Serial.begin(9600);
 
   servo.write(90);
 }
 
 void loop() {
-  go_forward();
+    connection = Serial.read();
+  Serial.println(connection);
+
+  if (connection == '1'){
+    servo_motor_forward();
+    go_forward();
+    after_action();
+  }
+  if (connection == '2'){
+    go_backward();
+    after_action();
+  }
+  if (connection == '3'){
+    servo_motor_right();
+    turn_right();
+    after_action();
+  }
+  if (connection == '4'){
+    servo_motor_left();
+    turn_left();
+    after_action();
+  }
+  if (connection == '5'){
+    stop();
+    delay(500);
+  }
 }
 
 void go_forward(){
