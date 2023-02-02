@@ -2,7 +2,7 @@
 
 > shortcuts:
 > 
-> [1. robot_car_1](#robot_car_1) [created - Wed Feb 1 23:03:02 2023 +0530]
+> **[1. robot_car_1](#robot_car_1)**  | created - Wed Feb 1 23:03:02 2023 +0530 | This is an Arduino code that **controls a car** powered by an Arduino board.
 
 ### robot_car_1
 This is an Arduino code that **controls a car** powered by an Arduino board. The car is equipped with a **servo motor** for steering and an **ultrasonic sensor** for obstacle detection. The car can receive commands from a **Bluetooth module** to *move forward, backward, turn left, turn right and stop.*
