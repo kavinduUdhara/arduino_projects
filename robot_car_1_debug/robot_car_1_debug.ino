@@ -2,13 +2,14 @@
 //servo motor
 Servo servo = Servo();
 
-int EnA = 5;
-int In1 = 6;
-int In2 = 7;
+int EnA = 3; // Enable Pin for motor A
+int In1 = 4; // Input 1 Pin for motor A
+int In2 = 5; // Input 2 Pin for motor A
 
-int EnB = 9;
-int In3 = 10;
-int In4 = 11;
+// Motor B
+int EnB = 11; // Enable Pin for motor B
+int In3 = 12; // Input 3 Pin for motor B
+int In4 = 13; // Input 4 Pin for motor B
 
 char connection;
 
