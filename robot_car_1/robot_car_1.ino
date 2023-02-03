@@ -32,7 +32,7 @@ ref: https://stackoverflow.com/questions/75318922/motor-driver-isnt-working-prop
 char connection; //for read bluetooth module connection signels
 
 void setup() {
-  servo.attach(A0); // servo motor is connected to pin A0 
+  servo.attach(10); // servo motor is connected to pin 10
 
   //L298N-2A Motor Driver Module | motorA - pins
   pinMode(EnA, OUTPUT);
@@ -54,13 +54,6 @@ void setup() {
 
 // This is the main loop function where the program listens to the bluetooth connection signals 
 void loop() {
-  go_forward();
-  
-  // Read the signal received from the bluetooth connection
-  connection = Serial.read();
-  Serial.println(connection); // Print the received signal on the serial monitor
-
-  /*
     // Check if the received signal is '1'
   if (connection == '1'){
     servo_motor_forward();
@@ -100,7 +93,7 @@ void loop() {
   if (connection == '5'){
     stop();
     delay(500); // Wait for 500ms
-  }*/
+  }
 }
 
 // This function moves the robot forward
