@@ -2,7 +2,7 @@
   Project: Arduino Controlled Car with Servo Motor, Ultrasonic Sensor and bluetooth moduler
   Purpose: This code provides to control an arduino-powered car with a servo motor and ultrasonic sensor. The car can receive commands through Bluetooth to move forward, backward, turn left, turn right and stop.
   Function: The servo motor acts as the steering mechanism, while the ultrasonic sensor is used for obstacle detection.
-  Auther: (c) Kavindu Udhara | all rights reserved
+  Auther: (cc) Kavindu Udhara
 */
 
 #include <Servo.h> // Include Servo library
@@ -54,17 +54,19 @@ void setup() {
 
 // This is the main loop function where the program listens to the bluetooth connection signals 
 void loop() {
+  go_forward();
+  
   // Read the signal received from the bluetooth connection
   connection = Serial.read();
   Serial.println(connection); // Print the received signal on the serial monitor
 
-  // Check if the received signal is '1'
+  /*
+    // Check if the received signal is '1'
   if (connection == '1'){
     servo_motor_forward();
-    delay(2000);
     int distance = ultrasonicSensor.distanceRead(); // Measure the distance using the ultrasonic sensor
-    // Check if the distance measured is not 0 and greater than 20
-    if (distance != 0 and distance > 20){
+    // Check if the distance measured is not 0 and greater than 30
+    if (distance != 0 and distance > 30){
       go_forward();
       after_action();
     }
@@ -79,7 +81,7 @@ void loop() {
     servo_motor_right();
     int distance = ultrasonicSensor.distanceRead();
     Serial.println(distance);
-    if (distance != 0 and distance > 20){
+    if (distance != 0 and distance > 30){
       turn_right();
       after_action();
     }
@@ -89,7 +91,7 @@ void loop() {
     servo_motor_left();
     int distance = ultrasonicSensor.distanceRead();
     Serial.println(distance);
-    if (distance != 0 and distance > 20){
+    if (distance != 0 and distance > 30){
       turn_left();
       after_action();
     }
@@ -98,7 +100,7 @@ void loop() {
   if (connection == '5'){
     stop();
     delay(500); // Wait for 500ms
-  }
+  }*/
 }
 
 // This function moves the robot forward
