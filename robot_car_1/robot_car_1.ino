@@ -54,6 +54,35 @@ void setup() {
 
 // This is the main loop function where the program listens to the bluetooth connection signals 
 void loop() {
+
+  if (connection == 1){
+    servo.write(30);
+    delay(500);
+    servo.write(90);
+    delay(500);
+    servo.write(150);
+    delay(500);
+    servo.write(90);
+    delay(500);
+    int d = u.distanceRead();
+    if (d != 0) {
+      if (d > 10) {
+        // Forward Code
+        digitalWrite(In1, HIGH);
+        digitalWrite(In2, LOW);
+        digitalWrite(In3, LOW);
+        digitalWrite(In4, HIGH);
+        delay(500);
+        digitalWrite(In1, LOW);
+        digitalWrite(In2, LOW);
+        digitalWrite(In3, LOW);
+        digitalWrite(In4, LOW);
+        delay(500);
+      }
+    }
+    servo.write(90);
+  }
+  /*
     // Check if the received signal is '1'
   if (connection == '1'){
     servo_motor_forward();
@@ -93,7 +122,7 @@ void loop() {
   if (connection == '5'){
     stop();
     delay(500); // Wait for 500ms
-  }
+  }*/
 }
 
 // This function moves the robot forward
