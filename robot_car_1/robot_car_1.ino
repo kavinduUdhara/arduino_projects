@@ -82,6 +82,77 @@ void loop() {
     }
     servo.write(90);
   }
+  if (connection == 2){
+    // Backward Code
+    digitalWrite(In1, LOW);
+    digitalWrite(In2, HIGH);
+    digitalWrite(In3, HIGH);
+    digitalWrite(In4, LOW);
+    delay(500);
+    digitalWrite(In1, LOW);
+    digitalWrite(In2, LOW);
+    digitalWrite(In3, LOW);
+    digitalWrite(In4, LOW);
+    delay(500);
+  }
+  if(connection == 3){
+    servo.write(150);
+    delay(500);
+    servo.write(90);
+    delay(500);
+    servo.write(150);
+    delay(500);
+    int d = u.distanceRead();
+    if (d != 0) {
+      if (d > 10) {
+        // Left Code
+        digitalWrite(In1, LOW);
+        digitalWrite(In2, HIGH);
+        digitalWrite(In3, LOW);
+        digitalWrite(In4, HIGH);
+        delay(500);
+        digitalWrite(In1, LOW);
+        digitalWrite(In2, LOW);
+        digitalWrite(In3, LOW);
+        digitalWrite(In4, LOW);
+        delay(500);
+      }
+    }
+    servo.write(90);
+  }
+  if (connection == 4){
+    s.write(30);
+    delay(500);
+    s.write(90);
+    delay(500);
+    s.write(30);
+    delay(500);
+    int d = u.distanceRead();
+    if (d != 0) {
+      if (d > 10) {
+        // Right Code
+        digitalWrite(In1, HIGH);
+        digitalWrite(In2, LOW);
+        digitalWrite(In3, HIGH);
+        digitalWrite(In4, LOW);
+        delay(500);
+        digitalWrite(In1, LOW);
+        digitalWrite(In2, LOW);
+        digitalWrite(In3, LOW);
+        digitalWrite(In4, LOW);
+        delay(500);
+      }
+    }
+    s.write(90);
+  }
+  if (connection == 5){
+    //stop code
+            digitalWrite(In1, LOW);
+        digitalWrite(In2, LOW);
+        digitalWrite(In3, LOW);
+        digitalWrite(In4, LOW);
+  }    
+}
   /*
     // Check if the received signal is '1'
   if (connection == '1'){
@@ -123,7 +194,6 @@ void loop() {
     stop();
     delay(500); // Wait for 500ms
   }*/
-}
 
 // This function moves the robot forward
 void go_forward(){
