@@ -2,7 +2,7 @@
   Project: Arduino Controlled Car with Servo Motor, Ultrasonic Sensor and bluetooth moduler
   Purpose: This code provides to control an arduino-powered car with a servo motor and ultrasonic sensor. The car can receive commands through Bluetooth to move forward, backward, turn left, turn right and stop.
   Function: The servo motor acts as the steering mechanism, while the ultrasonic sensor is used for obstacle detection.
-  Auther: (cc) Kavindu Udhara
+  Author: (cc) Kavindu Udhara
 */
 
 #include <Servo.h> // Include Servo library
@@ -14,7 +14,7 @@ Both of these libraries simplify the implementation of these components in the p
 // Servo Motor
 Servo servo = Servo(); // Create an object for the servo motor
 // Ultrasonic Sensor
-Ultrasonic ultrasonicSensor = Ultrasonic(A2, A1);  // ultrasonic sensor is connected to pins A2 (Trig Pin) and A1 (Echo Pin)
+Ultrasonic u = Ultrasonic(A2, A1);  // ultrasonic sensor is connected to pins A2 (Trig Pin) and A1 (Echo Pin)
 
 // L298N Motor Driver
 // Motor A
@@ -54,7 +54,8 @@ void setup() {
 
 // This is the main loop function where the program listens to the bluetooth connection signals 
 void loop() {
-
+  Serial.write(connection);
+  Serial.write("\n");
   if (connection == 1){
     servo.write(30);
     delay(500);
@@ -121,11 +122,11 @@ void loop() {
     servo.write(90);
   }
   if (connection == 4){
-    s.write(30);
+    servo.write(30);
     delay(500);
-    s.write(90);
+    servo.write(90);
     delay(500);
-    s.write(30);
+    servo.write(30);
     delay(500);
     int d = u.distanceRead();
     if (d != 0) {
@@ -143,19 +144,17 @@ void loop() {
         delay(500);
       }
     }
-    s.write(90);
+    servo.write(90);
   }
   if (connection == 5){
     //stop code
-            digitalWrite(In1, LOW);
-        digitalWrite(In2, LOW);
-        digitalWrite(In3, LOW);
-        digitalWrite(In4, LOW);
-  }    
-}
-  /*
-    // Check if the received signal is '1'
-  if (connection == '1'){
+    digitalWrite(In1, LOW);
+    digitalWrite(In2, LOW);
+    digitalWrite(In3, LOW);
+    digitalWrite(In4, LOW);
+  }  
+   // Check if the received signal is '1'
+   /* if (connection == '1'){
     servo_motor_forward();
     int distance = ultrasonicSensor.distanceRead(); // Measure the distance using the ultrasonic sensor
     // Check if the distance measured is not 0 and greater than 30
@@ -194,6 +193,7 @@ void loop() {
     stop();
     delay(500); // Wait for 500ms
   }*/
+}
 
 // This function moves the robot forward
 void go_forward(){
