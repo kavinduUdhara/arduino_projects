@@ -35,7 +35,6 @@ void setup() {
 }
 
 void loop() {
-  go_forward();
 }
 
 void go_forward(){
