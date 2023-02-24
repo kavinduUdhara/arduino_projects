@@ -7,14 +7,13 @@
 
 #include <Servo.h> // Include Servo library
 #include <Ultrasonic.h> // Include Ultrasonic library
-/*The Servo.h library is used to control a servo motor in the project. It provides functions for setting the servo motor's position, speed, and other properties.
-The Ultrasonic.h library is used to measure the distance between the ultrasonic sensor and an object in front of it. It provides functions to trigger the ultrasonic sensor and receive the time required for the echo signal to return. This time can then be used to calculate the distance to the object.
-Both of these libraries simplify the implementation of these components in the project, making it easier to control the servo motor and measure distance with the ultrasonic sensor.*/
+#include <SoftwareSerial.h>]
 
 // Servo Motor
 Servo servo = Servo(); // Create an object for the servo motor
 // Ultrasonic Sensor
 Ultrasonic u = Ultrasonic(A2, A1);  // ultrasonic sensor is connected to pins A2 (Trig Pin) and A1 (Echo Pin)
+SoftwareSerial BTSerial(6, 7); // RX, TX pins on Arduino
 
 // L298N Motor Driver
 // Motor A
@@ -49,13 +48,17 @@ void setup() {
   analogWrite(EnB, 100);
 
   //for bluetooth signals
-  Serial.begin(9600);  // Start serial communication at 9600 baud rate
+  Serial.begin(9600); // Set up serial communication
+  BTSerial.begin(9600); // Set up Bluetooth communication
 }
 
 // This is the main loop function where the program listens to the bluetooth connection signals 
 void loop() {
-  Serial.write(connection);
-  Serial.write("\n");
+  //if (BTSerial.available()) { // Check if there is data available from the Bluetooth module
+    connection = BTSerial.read(); // Read the data
+    Serial.write(connection); // Print the data to the serial monitor
+    Serial.write("\n");
+  //}
   if (connection == 1){
     servo.write(30);
     delay(500);
